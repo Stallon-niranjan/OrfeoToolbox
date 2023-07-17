@@ -44,6 +44,8 @@ OUT_DIR=$(pwd)
 if [ -f "$OUT_DIR/lib/python/_otbApplication.so" ] ; then
     chmod +x "$OUT_DIR/setup_python.sh"
     ./setup_python.sh || setup_python_ret=$?
+    echo "Recompiling python bindings with your version of python"
+    ctest -S $OUT_DIR/share/otb/swig/build_wrapping.cmake -VV
 fi
 
 # No no interference with LD_LIBRARY_PATH
